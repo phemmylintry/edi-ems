@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-1ea83x2@cu^pz57b_v#j5($w=@twk63q0xim((^=21c3^^6eqt
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = []  # type: ignore
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # Third party apps
     "rest_framework",
+    "drf_spectacular",
     # Local apps
     "api",
 ]
@@ -70,6 +71,18 @@ TEMPLATES = [
         },
     },
 ]
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "EDI Employee Management System API",
+    "DESCRIPTION": "Employee Management System",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+}
+
+REST_FRAMEWORK = {
+    # YOUR SETTINGS
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
 
 WSGI_APPLICATION = "edi_ems_api.wsgi.application"
 
