@@ -42,7 +42,7 @@ class EmployeesSalarySerializer(serializers.ModelSerializer):
         model = Employee
         fields = ["name", "employee_id", "salary"]
 
-    def get_salary(self, obj) -> decimal:
+    def get_salary(self, obj) -> float:
         hourly_rate = float(obj.hourly_rate)
 
         # check if employee has work arrangement
