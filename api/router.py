@@ -7,6 +7,7 @@ from .views import (
     TeamLeaderViewSet,
     TeamViewSet,
     WorkArrangementViewSet,
+    EmployeesSalaryViewSet,
 )
 
 router = DefaultRouter()
@@ -18,5 +19,9 @@ router.register(r"team-leaders", TeamLeaderViewSet, basename="team-leaders")
 router.register(
     r"work-arrangements", WorkArrangementViewSet, basename="work-arrangements"
 )
-
+router.register(
+    r"list-employees-salary",
+    EmployeesSalaryViewSet,
+    basename="list-employees-salary",
+)
 urlpatterns = [] + router.urls

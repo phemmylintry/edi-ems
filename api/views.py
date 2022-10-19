@@ -1,4 +1,5 @@
-from rest_framework.viewsets import ModelViewSet
+from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
+from rest_framework.response import Response
 
 from .models import Employee, Team, TeamEmployee, TeamLeader, WorkArrangement
 from .serializers import (
@@ -7,6 +8,7 @@ from .serializers import (
     TeamLeaderSerializer,
     TeamSerializer,
     WorkArrangementSerializer,
+    EmployeesSalarySerializer,
 )
 
 
@@ -33,3 +35,21 @@ class TeamLeaderViewSet(ModelViewSet):
 class WorkArrangementViewSet(ModelViewSet):
     queryset = WorkArrangement.objects.all()
     serializer_class = WorkArrangementSerializer
+
+
+class EmployeesSalaryViewSet(ReadOnlyModelViewSet):
+    queryset = Employee.objects.all()
+    serializer_class = EmployeesSalarySerializer
+
+    def get_queryset(self):
+        # fetch related objects using reverse relation
+        queryset = self.queryset.prefetch_related(
+            "work_arrangements",
+            "team_leader_employee",
+        ).all()
+        return queryset
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data, 200)

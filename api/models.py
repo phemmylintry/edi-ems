@@ -55,7 +55,7 @@ class TeamLeader(DateMixin):
     employee = models.OneToOneField(
         Employee, on_delete=models.CASCADE, related_name="team_leader_employee"
     )
-    team = models.ForeignKey(
+    team = models.OneToOneField(
         Team, on_delete=models.CASCADE, related_name="team_leader_team"
     )
 
@@ -64,7 +64,7 @@ class TeamLeader(DateMixin):
 
 
 class TeamEmployee(DateMixin):
-    employee = models.ForeignKey(
+    employee = models.OneToOneField(
         Employee, on_delete=models.CASCADE, related_name="team_employee_employee"
     )
     team = models.ForeignKey(
@@ -84,7 +84,7 @@ class WorkArrangement(DateMixin):
         (PART_TIME, "Part Time"),
     )
 
-    employee = models.ForeignKey(
+    employee = models.OneToOneField(
         Employee, on_delete=models.CASCADE, related_name="work_arrangements"
     )
     work_arrangement = models.IntegerField(
