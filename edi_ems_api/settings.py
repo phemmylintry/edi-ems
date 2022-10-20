@@ -14,7 +14,7 @@ SECRET_KEY = "django-insecure-1ea83x2@cu^pz57b_v#j5($w=@twk63q0xim((^=21c3^^6eqt
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []  # type: ignore
+ALLOWED_HOSTS = ["127.0.0.1", "ems.samorb.com"]  # type: ignore
 
 
 # Application definition
