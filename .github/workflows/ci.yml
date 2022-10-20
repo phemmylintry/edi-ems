@@ -32,7 +32,7 @@ jobs:
         run: |
           poetry run black --check .
           poetry run mypy --check .
-      
-      - name: coverage run pytest 
+
+      - name: coverage run pytest
         run: |
           poetry run coverage run -m pytest
