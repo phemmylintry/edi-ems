@@ -1,0 +1,27 @@
+name: EDI EMS API autodeply
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.10]
+    
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Git Pull on Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOSTNAME }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          script: |
+            cd edi-ems
+            git pull
+            docker-compose up --build -d
