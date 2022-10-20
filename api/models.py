@@ -56,7 +56,12 @@ class TeamLeader(DateMixin):
         Employee, on_delete=models.CASCADE, related_name="team_leader_employee"
     )
     team = models.OneToOneField(
-        Team, on_delete=models.CASCADE, related_name="team_leader_team"
+        Team,
+        on_delete=models.CASCADE,
+        related_name="team_leader_team",
+        blank=True,
+        null=True,
+        default=None,
     )
 
     def __str__(self):
@@ -68,7 +73,12 @@ class TeamEmployee(DateMixin):
         Employee, on_delete=models.CASCADE, related_name="team_employee_employee"
     )
     team = models.ForeignKey(
-        Team, on_delete=models.CASCADE, related_name="team_employee_team"
+        Team,
+        on_delete=models.CASCADE,
+        related_name="team_employee_team",
+        blank=True,
+        null=True,
+        default=None,
     )
 
     def __str__(self):
