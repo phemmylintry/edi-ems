@@ -3,7 +3,10 @@ name: Automated Testing
 on:
   push:
     branches:
+      - develop
   pull_request:
+    branches:
+      - main
 
 jobs:
   test:
