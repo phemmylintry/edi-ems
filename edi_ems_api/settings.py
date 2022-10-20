@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # Third party apps
     "rest_framework",
-    "drf_spectacular",
+    'drf_yasg',
     "debug_toolbar",
     # Local apps
     "api",
@@ -88,8 +88,7 @@ SPECTACULAR_SETTINGS = {
 }
 
 REST_FRAMEWORK = {
-    # YOUR SETTINGS
-    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+
 }
 
 WSGI_APPLICATION = "edi_ems_api.wsgi.application"

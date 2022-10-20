@@ -1,6 +1,7 @@
 from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
 from rest_framework.response import Response
 
+
 from .models import Employee, Team, TeamEmployee, TeamLeader, WorkArrangement
 from .serializers import (
     EmployeeSerializer,
@@ -10,7 +11,6 @@ from .serializers import (
     WorkArrangementSerializer,
     EmployeesSalarySerializer,
 )
-
 
 class EmployeeViewSet(ModelViewSet):
     serializer_class = EmployeeSerializer
