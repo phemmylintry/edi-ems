@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "edi-ems-api"
+version = "0.1.0"
+description = ""
+authors = ["Oluwafemi Adenuga <phemmylintry@gmail.com>"]
+readme = "README.md"
+packages = [{include = "edi_ems_api"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+django = "^4.1.2"
+djangorestframework = "^3.14.0"
+coverage = "^6.5.0"
+pytest-django = "^4.5.2"
+pytest = "^7.1.3"
+django-debug-toolbar = "^3.7.0"
+pytest-cov = "^4.0.0"
+drf-yasg = "^1.21.4"
+gunicorn = "^20.1.0"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^22.10.0"
+mypy = "^0.982"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

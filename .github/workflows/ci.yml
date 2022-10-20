@@ -1,0 +1,38 @@
+name: Automated Testing
+
+on:
+  push:
+    branches:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-22.04
+    strategy:
+      max-parallel: 3
+      matrix:
+        python-version: ["3.8", "3.9", "3.10"]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        run: |
+          pip install --upgrade pip
+      - run: pipx install poetry==1.2.1
+      - uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: poetry
+
+      - name: install dependencies
+        run: |
+          poetry install --no-root
+
+      - name: check formatting and Typing
+        run: |
+          poetry run black --check .
+          poetry run mypy --check .
+
+      - name: coverage run pytest
+        run: |
+          poetry run coverage run -m pytest
