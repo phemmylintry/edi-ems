@@ -12,6 +12,7 @@ from .serializers import (
     EmployeesSalarySerializer,
 )
 
+
 class EmployeeViewSet(ModelViewSet):
     serializer_class = EmployeeSerializer
 
