@@ -12,29 +12,29 @@ class TeamSerializer(serializers.ModelSerializer):
 
 
 class EmployeeSerializer(serializers.ModelSerializer):
-    team = serializers.SerializerMethodField()
+    # team = serializers.SerializerMethodField()
 
     class Meta:
         model = Employee
         exclude = ("created_at", "updated_at")
 
-    def get_team(self, obj):
-        return TeamSerializer(obj.team).data
+    # def get_team(self, obj):
+    #     return TeamSerializer(obj.team).data
 
 
 class TeamEmployeeSerializer(serializers.ModelSerializer):
-    employee = serializers.SerializerMethodField()
-    team = serializers.SerializerMethodField()
+    # employee = serializers.SerializerMethodField()
+    # team = serializers.SerializerMethodField()
 
     class Meta:
         model = TeamEmployee
         exclude = ("created_at", "updated_at")
 
-    def get_employee(self, obj):
-        return EmployeeSerializer(obj.employee).data
+    # def get_employee(self, obj):
+    #     return EmployeeSerializer(obj.employee).data
 
-    def get_team(self, obj):
-        return TeamSerializer(obj.team).data
+    # def get_team(self, obj):
+    #     return TeamSerializer(obj.team).data
 
 
 class TeamLeaderSerializer(serializers.ModelSerializer):
