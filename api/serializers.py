@@ -5,34 +5,48 @@ from .utils import calculate_employee_monthly_salary
 from .models import Employee, Team, TeamEmployee, TeamLeader, WorkArrangement
 
 
-class EmployeeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Employee
-        fields = "__all__"
-
-
 class TeamSerializer(serializers.ModelSerializer):
     class Meta:
         model = Team
-        fields = "__all__"
+        exclude = ("created_at", "updated_at")
+
+
+class EmployeeSerializer(serializers.ModelSerializer):
+    team = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Employee
+        exclude = ("created_at", "updated_at")
+
+    def get_team(self, obj):
+        return TeamSerializer(obj.team).data
 
 
 class TeamEmployeeSerializer(serializers.ModelSerializer):
+    employee = serializers.SerializerMethodField()
+    team = serializers.SerializerMethodField()
+
     class Meta:
         model = TeamEmployee
-        fields = "__all__"
+        exclude = ("created_at", "updated_at")
+
+    def get_employee(self, obj):
+        return EmployeeSerializer(obj.employee).data
+
+    def get_team(self, obj):
+        return TeamSerializer(obj.team).data
 
 
 class TeamLeaderSerializer(serializers.ModelSerializer):
     class Meta:
         model = TeamLeader
-        fields = "__all__"
+        exclude = ("created_at", "updated_at")
 
 
 class WorkArrangementSerializer(serializers.ModelSerializer):
     class Meta:
         model = WorkArrangement
-        fields = "__all__"
+        exclude = ("created_at", "updated_at")
 
 
 class EmployeesSalarySerializer(serializers.ModelSerializer):

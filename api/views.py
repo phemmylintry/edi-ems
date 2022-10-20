@@ -13,8 +13,10 @@ from .serializers import (
 
 
 class EmployeeViewSet(ModelViewSet):
-    queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
+
+    def get_queryset(self):
+        return Employee.objects.select_related("team").all()
 
 
 class TeamViewSet(ModelViewSet):
@@ -23,8 +25,10 @@ class TeamViewSet(ModelViewSet):
 
 
 class TeamEmployeeViewSet(ModelViewSet):
-    queryset = TeamEmployee.objects.all()
     serializer_class = TeamEmployeeSerializer
+
+    def get_queryset(self):
+        return TeamEmployee.objects.select_related("employee", "team").all()
 
 
 class TeamLeaderViewSet(ModelViewSet):
