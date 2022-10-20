@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # Third party apps
     "rest_framework",
     "drf_spectacular",
+    "debug_toolbar",
     # Local apps
     "api",
 ]
@@ -47,6 +48,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -55,6 +57,12 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "edi_ems_api.urls"
+
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1",
+    # ...
+]
 
 TEMPLATES = [
     {

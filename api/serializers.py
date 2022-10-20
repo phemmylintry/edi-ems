@@ -44,14 +44,7 @@ class EmployeesSalarySerializer(serializers.ModelSerializer):
 
     def get_salary(self, obj) -> float:
         hourly_rate = float(obj.hourly_rate)
-
-        # check if employee has work arrangement
-        if obj.work_arrangements:
-            work_arranagement = obj.work_arrangements.work_arrangement
-            hours_per_week = obj.work_arrangements.hours_per_week
-        else:
-            work_arranagement = WorkArrangement.FULL_TIME
-            hours_per_week = 40
+        hours_per_week = obj.work_arrangements.hours_per_week
 
         # check if employee is team leader of any team using reverse relation
         try:
@@ -60,5 +53,5 @@ class EmployeesSalarySerializer(serializers.ModelSerializer):
             team_leader = None
 
         return calculate_employee_monthly_salary(
-            work_arranagement, hourly_rate, hours_per_week, team_leader
+            hourly_rate, hours_per_week, team_leader
         )
