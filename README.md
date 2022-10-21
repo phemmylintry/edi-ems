@@ -7,6 +7,9 @@ leaders are paid an additional 10% for their work.
 Create an API which lets the company's accountant retrieve the list of employees with their respective
 pay for the month.
 
+## Postman Documentation
+Link to the Postman documentation: https://documenter.getpostman.com/view/11358975/2s84DkU4hJ#23cf3458-9b66-48f8-8268-5dd93a0342da
+
 ## Installation
 
 Clone the project, create a virtual environment, install dependencies
