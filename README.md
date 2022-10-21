@@ -16,7 +16,6 @@ Base API URL: https://ems.samorb.com/api/
 - Docker, Docker Compose, Github, Github Actions
 - Nginx, Gunicorn, DigitalOcean (Ubuntu 20.04)
 - PyTest, Black, MyPy, Django Debug Toolbar
-- 
 
 ## Postman Documentation
 Link to the Postman documentation: https://documenter.getpostman.com/view/11358975/2s84DkU4hJ#23cf3458-9b66-48f8-8268-5dd93a0342da
